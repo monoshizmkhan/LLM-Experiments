@@ -50,8 +50,19 @@ model.save_pretrained(save_directory)
 tokenizer.save_pretrained(save_directory)
 print("Model saved.")
 
+tokenizer = AutoTokenizer.from_pretrained("./my_saved_model")
+model = AutoModelForCausalLM.from_pretrained("./my_saved_model")
+
 print("Evaluating model...")
 perplexity = evaluate.load("perplexity")
-results = perplexity.compute(model_id="./results", predictions=["Sample text"], tokenizer=tokenizer)
+
+example_texts = [
+    "Once upon a time, there was a brave knight.",
+    "In a galaxy far, far away, a new adventure began.",
+    "It was a dark and stormy night."
+]
+
+results = perplexity.compute(model_id="./my_saved_model", predictions=example_texts)
 print("Results:")
+
 print(results)
