@@ -4,7 +4,8 @@ import evaluate
 
 def tokenize_function(example):
     tokens = tokenizer(example["text"], truncation=True, padding="max_length")
-    tokens["labels"] = tokens["input_ids"].copy()
+    # tokens["labels"] = tokens["input_ids"].copy()
+    tokens["labels"] = tokens["input_ids"][1:] + [tokenizer.eos_token]
     return tokens
 
 print("Loading dataset...")
@@ -66,3 +67,4 @@ results = perplexity.compute(model_id="./my_saved_model", predictions=example_te
 print("Results:")
 
 print(results)
+
