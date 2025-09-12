@@ -12,3 +12,6 @@ The variables in both files can be edited as needed.
 
 
 Planned future parts of this project include using LangChain modules.
+
+
+[Link to drive containing trained model and tokenizer files.](https://drive.google.com/drive/folders/1YBd5Ea4L54AJ9luTnPd1OpnjFsarh97u?usp=sharing)
